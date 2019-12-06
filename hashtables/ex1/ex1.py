@@ -9,12 +9,15 @@ from hashtables import (HashTable,
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
+
     for i in range(length):
-        hash_table_insert(ht, weights[i], i)
+
+        print('from hash', i, hash_table_retrieve(ht, limit - weights[i]))
+
         if hash_table_retrieve(ht, limit - weights[i]) is not None:
             return [i, hash_table_retrieve(ht, limit - weights[i])]
 
-    # print(hash_table_retrieve(ht, weights[1]))
+        hash_table_insert(ht, weights[i], i)
 
     return None
 
@@ -25,5 +28,5 @@ def print_answer(answer):
     else:
         print("None")
 
-weights = [2, 2, 4, 9]
-print(get_indices_of_item_weights(weights, 2, 4))
+weights = [2, 3, 4, 9]
+print(get_indices_of_item_weights(weights, 4, 6))
